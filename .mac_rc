@@ -4,7 +4,9 @@
 alias vim=/usr/local/bin/vim
 to_gnu() {
     alias tar=/usr/local/bin/gtar
-    alias date=/usr/local/bin/gdate
+    # alias date=/usr/local/bin/gdate  # TODO
+    # FIXME: do this only if on macos/darwin
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"  # include all GNU stuff
 }
 to_gnu
 
