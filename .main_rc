@@ -4,15 +4,20 @@
 DIR=$ME/aliases
 
 self() {
-    if [ -f $DIR/.self_rc.sh ]; then
+    if [ -f $DIR/.self_rc ]; then
         source $DIR/.self_rc
     fi
 }
 
 mac() {
-    if [ -f $DIR/.mac_rc.sh ]; then
+    if [ -f $DIR/.mac_rc ]; then
         source $DIR/.mac_rc
     fi
 }
 
+main(){
+    self
+    mac
+}
 
+main
