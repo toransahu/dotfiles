@@ -205,25 +205,15 @@ setopt HIST_VERIFY                                      # whenever the user ente
 
 # --------------------------------------------
 
-# source env vars
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
+# Auto-Completion for zsh
+## Google Cloud SDK
 if [ -f $HOME/google-cloud-sdk/path.zsh.inc ]; then source $HOME/google-cloud-sdk/path.zsh.inc; fi
-
-# The next line enables shell command completion for gcloud.
 if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then source $HOME/google-cloud-sdk/completion.zsh.inc; fi
-
-# setup autocomplete in zsh into the current shell
+## kubectl
 if [ -f '/usr/local/bin/kubectl' ]; then source <(kubectl completion zsh); fi
-
-# setup `aws-okta` autocomplete in zsh
+## `aws-okta`
 if [ -f $GOPATH/bin/aws-okta ]; then source <(aws-okta completion zsh); fi
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
-
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/toran/.sdkman"
-[[ -s "/Users/toran/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/toran/.sdkman/bin/sdkman-init.sh"
