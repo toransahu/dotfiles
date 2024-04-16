@@ -710,5 +710,10 @@ endfunction
 
 call ConfigureTpopeRhubarb()
 
-set guifont=:h
+fu! ConfigureShFmt()
+    let g:shfmt_extra_args = ''
+endfunction
 
+call ConfigureShFmt()
+
+set guifont=:h

@@ -101,3 +101,4 @@ Plug 'puremourning/vimspector'                " polyglot debugger
 " Plug 'sebdah/vim-delve'                       " golang debugger using Delve
 Plug 'majutsushi/tagbar'                      " to browse tags of current file; dependency: exuberant-ctags
 Plug 'turbio/bracey.vim'                      " preview markup files; html, css, js
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }      " A shell parser, formatter, and interpreter with bash support
