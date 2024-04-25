@@ -75,6 +75,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+# Issue: (venv) shims name not visible as prefix in zsh prompt
+# Sol: https://stackoverflow.com/questions/38928717/virtualenv-name-not-show-in-zsh-prompt 
+export VIRTUAL_ENV_DISABLE_PROMPT=
 
 
 # User configuration
