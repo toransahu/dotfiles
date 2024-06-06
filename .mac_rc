@@ -6,7 +6,8 @@ to_gnu() {
     alias tar=/usr/local/bin/gtar
     # alias date=/usr/local/bin/gdate  # TODO
     # FIXME: do this only if on macos/darwin
-    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"  # include all GNU stuff
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"  # include all GNU stuff to PATH
+    export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"  # include all GNU stuff to MANPATH
 }
 to_gnu
 

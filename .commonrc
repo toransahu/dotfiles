@@ -120,13 +120,13 @@ export MY_IP_ADDR=$LANIP
 . ~/paths.sh
 
 # load public RCs
-if [ -f $ME/aliases/.main_rc ]; then
-    . $ME/aliases/.main_rc
+if [ -f $ME/dotfiles/.main_rc ]; then
+    . $ME/dotfiles/.main_rc
 fi
 
 # load private RCs
-if [ -f $ME/aliases.pvt/.main_rc ]; then
-    . $ME/aliases.pvt/.main_rc
+if [ -f $ME/dotfiles.pvt/.main_rc ]; then
+    . $ME/dotfiles.pvt/.main_rc
 fi
 
 # aliases

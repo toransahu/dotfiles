@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-DIR=$ME/aliases
+DIR=$ME/dotfiles
 
 self() {
     if [ -f $DIR/.self_rc ]; then
