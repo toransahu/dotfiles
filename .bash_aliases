@@ -50,7 +50,7 @@ gbdf(){
     git branch -D $GIT_TEMP_BRANCH 
     unset GIT_TEMP_BRANCH
 }
-alias gls='git log --stat'
+alias gls='git log --stat --pretty=fuller'
 alias gfa='git fetch --all'
 alias master='git checkout master'
 alias gdiff='git diff'
