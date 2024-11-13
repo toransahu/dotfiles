@@ -114,6 +114,9 @@ export LANIP=$([ -z "$LANIFACE" ] && echo '127.0.0.1' || echo $(ifconfig $LANIFA
 
 export MY_IP_ADDR=$LANIP
 
+export DISPLAYPLACER_DELL_MONITOR_SERIAL_ID=s1129140312
+export DISPLAYPLACER_BENQ_MONITOR_SERIAL_ID=s21573
+
 # -----Source Misc-----
 
 ## init - include/source PATHs
