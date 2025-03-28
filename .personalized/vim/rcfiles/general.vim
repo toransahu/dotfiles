@@ -8,8 +8,8 @@ set title                                       " set filename in terminal windo
 " set nobackup
 " set nowritebackup
 " set noswapfile
-set clipboard^=unnamed,unnamedplus                       " this supports only vim-gnome not vim or vim-tiny
-set relativenumber                              " relative line number ON
+set clipboard^=unnamed,unnamedplus              " this supports only vim-gnome not vim or vim-tiny
+" set number relativenumber                     " relative line number ON; Now using 'vim-scripts/RltvNmbr.vim' for dynamic requirement
 set autoread                                    " automatically refresh any files that haven't been edited by Vim
 set mouse=nicra
 

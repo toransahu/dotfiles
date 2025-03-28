@@ -52,6 +52,7 @@ Plug 'rhysd/vim-grammarous'                   " Grammar check - based on www.lan
 " Plug 'kamykn/spelunker.vim'                   " spell check - made easy
 " Plug 'benmills/vimux'                         " Interact with tmux from vim
 Plug 'farconics/victionary'                   " Dictionary
+Plug 'vim-scripts/RltvNmbr.vim'
 
 "------------------------ Prog utils ---------------------------
 
@@ -76,7 +77,7 @@ Plug 'yaegassy/coc-ansible',                  " Ansible Language Server
 "Plug 'aperezdc/vim-template'
 Plug 'toransahu/vim-template'                 " Template System
 Plug 'heavenshell/vim-pydocstring',           " Python docstring gen
-            \ { 'do': 'make install' }
+            \ { 'do': 'make install', 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim'          " Python requirements File Format syntax support
 Plug 'scrooloose/nerdcommenter'               " for easy comments
 Plug 'tpope/vim-fugitive'                     " git commands in VIM
