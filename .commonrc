@@ -70,6 +70,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 ## java
 which jenv &>/dev/null && eval "$(jenv init -)"
 export JAVA_HOME=  # let user decide through `jenv`
+# Temporary for coc-java setup
+# export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+# export PATH=$JAVA_HOME/bin:$PATH
 
 ## sdkman
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -117,6 +120,12 @@ export MY_IP_ADDR=$LANIP
 export DISPLAYPLACER_BENQ_MONITOR_SERIAL_ID=s21573
 export DISPLAYPLACER_MAC_MONITOR_SERIAL_ID=s4251086178
 export DISPLAYPLACER_DELL_MONITOR_SERIAL_ID=s1129140312
+
+
+# Grafana Log CLI
+# setup command completion
+eval "$(logcli --completion-script-bash)"
+eval "$(logcli --completion-script-zsh)"
 
 # -----Source Misc-----
 
