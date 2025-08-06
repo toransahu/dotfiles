@@ -35,7 +35,8 @@ Plug 'justinmk/vim-gtfo'                      " GOTO PWD via file Manager or Ter
 " Plug 'toransahu/markdown-preview.nvim',
 "             \ { 'do': 'cd app & yarn install'}
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'toransahu/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Plug 'toransahu/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 "Plug 'ctrlpvim/ctrlp.vim'                    " super search
 Plug 'junegunn/fzf'                           " fuzzy finder
@@ -87,8 +88,8 @@ Plug 'raimondi/delimitmate'                   " auto close
 "Plug 'tmhedberg/SimpylFold'                  " python code fold
 Plug 'pseewald/anyfold'                       " code fold
 "Plug 'myitcv/govim'                          " new plugin for go written in go feature > vim-go
-" Plug 'fatih/vim-go',                          " go support; https://github.com/fatih/vim-go-tutorial
-"             \ { 'do': ':GoInstallBinaries' }  
+Plug 'fatih/vim-go',                          " go support; https://github.com/fatih/vim-go-tutorial
+            \ { 'do': ':GoUpdateBinaries' }  
 " Plug 'jodosha/vim-godebug'                  " go debugger in split screen with delve CLI - only for neovim; TODO: check later
 " Plug 'janko-m/vim-test'                     " polyglot test runner
 " Plug 'toransahu/vim-test',                  " with java#maven fqcn option support
@@ -101,6 +102,6 @@ Plug 'google/vim-codefmt'                     " code fmt by google
 Plug 'google/vim-glaive'                      " vim-codefmt dep: Also add Glaive, which is used to configure codefmt's maktaba flags.
 Plug 'puremourning/vimspector'                " polyglot debugger
 " Plug 'sebdah/vim-delve'                       " golang debugger using Delve
-Plug 'majutsushi/tagbar'                      " to browse tags of current file; dependency: exuberant-ctags
+Plug 'majutsushi/tagbar'                      " to browse tags of current file; dependency: exuberant-ctags; plugins: https://github.com/jstemmer/gotags
 Plug 'turbio/bracey.vim'                      " preview markup files; html, css, js
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }      " A shell parser, formatter, and interpreter with bash support
