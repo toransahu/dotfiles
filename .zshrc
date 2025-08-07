@@ -154,7 +154,8 @@ HISTFILE=~/.bash_history  # keep bash and zsh in sync
 export HISTFILE=$HISTFILE  # to avail as ENV VAR
 
 HISTSIZE=100000                                         # default:30
-HISTFILESIZE=100000                                     # default:not-set
+# HISTFILESIZE=100000                                   # default:not-set
+SAVEHIST=100000                                         # Bash's HISTFILESIZE equivalent
 
 # FIXME - move to ~/.commonrc
 # FIXME - functionality
