@@ -5,6 +5,8 @@
 ## basics
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
+## GPG
+export GPG_TTY=$(tty)
 
 ## Default Editor
 # export EDITOR=/usr/bin/vim  # bug: https://stackoverflow.com/questions/18683252/tmux-copy-does-not-work
@@ -124,13 +126,12 @@ export DISPLAYPLACER_DELL_MONITOR_SERIAL_ID=s1129140312
 
 # Grafana Log CLI
 # setup command completion
-eval "$(logcli --completion-script-bash)"
-eval "$(logcli --completion-script-zsh)"
+which logcli 2> /dev/null && eval "$(logcli --completion-script-bash)" && eval "$(logcli --completion-script-zsh)"
 
 # -----Source Misc-----
 
 ## init - include/source PATHs
-. ~/paths.sh
+. ~/.paths.sh
 
 # load public RCs
 if [ -f $ME/dotfiles/.main_rc ]; then
