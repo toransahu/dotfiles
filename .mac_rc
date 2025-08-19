@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 
-alias vim=/usr/local/bin/vim
 to_gnu() {
     alias tar=/usr/local/bin/gtar
     # alias date=/usr/local/bin/gdate  # TODO
