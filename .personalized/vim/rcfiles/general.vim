@@ -1,6 +1,8 @@
 " vim:ft=vim
 
 "===================== General Settings =====================
+" set guifont=JetBrainsMonoNerdFont:h12
+set guifont=hack_nerd_font:h21
 set encoding=utf-8                              " encoding
 set number                                      " set line number
 " filetype plugin indent on                       " filetype func off
@@ -11,7 +13,13 @@ set title                                       " set filename in terminal windo
 set clipboard^=unnamed,unnamedplus              " this supports only vim-gnome not vim or vim-tiny
 " set number relativenumber                     " relative line number ON; Now using 'vim-scripts/RltvNmbr.vim' for dynamic requirement
 set autoread                                    " automatically refresh any files that haven't been edited by Vim
-set mouse=nicra
+set mouse=nicra                                 " enable mouse in all modes; shorthand: set mouse=a or set mouse=h
+" Make mouse wheel scroll 1 line at a time
+map <ScrollWheelUp>   <C-Y>
+map <ScrollWheelDown> <C-E>
+" Shift + wheel = 5 lines (like “fast scroll”).
+map <S-ScrollWheelUp>   5<C-Y>
+map <S-ScrollWheelDown> 5<C-E>
 
 "===================== Issue Fix =====================
 " Issue: https://stackoverflow.com/questions/62148994/strange-character-since-last-update-42m-in-vim
