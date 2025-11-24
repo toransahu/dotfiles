@@ -20,7 +20,7 @@ export HISTIGNORE="$COMMONIGNORE:$ALIASIGNORE:$GITIGNORE"
 # export HISTTIMEFORMAT=": %s:0;"           # this is just about display, however time is always stored as epoch in the file like:
                                             # `# 159454837
 
-HISTSIZE=100000                            # limits the number of commands shown by the command history; default:500
+HISTSIZE=100000                           # limits the number of commands shown by the command history; default:500
 HISTFILESIZE=100000                       # limits the number of commands which can be saved in $HISTFILE; default:500
 
 # HISTCONTROL=ignoredups                  # ignoredups causes lines matching the previous history entry to not be saved
@@ -28,10 +28,11 @@ HISTFILESIZE=100000                       # limits the number of commands which 
 # HISTCONTROL=ignorespace                 # ignoredups causes to ignore commands starting with whitespace
 # HISTCONTROL=ignoreboth                  # don't put duplicate lines or lines starting with space
                                           # in the history; 
-                                          # ignoreboth == shorthand for `ignorespace` and `ignoredups`
-HISTCONTROL=ignorespace:erasedups         # until I clean all duplicates; after that I'll think about `ignoredups`
-shopt -s histappend                         # append to the history file, don't overwrite it
-shopt -s cmdhist                            # multiline commands are a single command in history
+HISTCONTROL=ignoreboth:erasedups          # ignoreboth == shorthand for `ignorespace` and `ignoredups`
+                                          # removes all previous lines matching the current line before that line is saved.
+
+shopt -s histappend                       # append to the history file, don't overwrite it
+shopt -s cmdhist                          # multiline commands are a single command in history
 PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 # Ref:
