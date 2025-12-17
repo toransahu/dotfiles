@@ -156,7 +156,7 @@ setopt NO_EXTENDED_HISTORY
 HISTSIZE=10000
 
 # Enable/install atuin shell plugin
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
 
 ## -----------shell history related
 #

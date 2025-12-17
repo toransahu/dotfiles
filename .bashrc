@@ -23,7 +23,7 @@ shopt -u histappend
 HISTSIZE=10000
 
 # Enable/install atuin shell plugin
-eval "$(atuin init bash)"
+eval "$(atuin init bash --disable-up-arrow)"
 
 ## ----------- shell history related
 #COMMONIGNORE="clear:tmux:pwd:du:df"
