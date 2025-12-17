@@ -10,39 +10,54 @@ case $- in
       *) return;;
 esac
 
-# ----------- shell history related
-COMMONIGNORE="clear:tmux:pwd:du:df"
-ALIASIGNORE="t:c:tks:ttt"
-GITIGNORE="gch:master:gpull:gpush"
-export HISTIGNORE="$COMMONIGNORE:$ALIASIGNORE:$GITIGNORE"
+## ----------- shell history related - post migration to atuin
+unset HISTFILE
+unset HISTFILESIZE
+unset HISTSIZE
 
-# TODO: give more try to keep zsh and bash history epoch stamp in sync
-# export HISTTIMEFORMAT=": %s:0;"           # this is just about display, however time is always stored as epoch in the file like:
-                                            # `# 159454837
+# Avoid shell-managed sync
+unset PROMPT_COMMAND
+shopt -u histappend
 
-HISTSIZE=100000                           # limits the number of commands shown by the command history; default:500
-HISTFILESIZE=100000                       # limits the number of commands which can be saved in $HISTFILE; default:500
+# Optional: keep small in-memory history
+HISTSIZE=10000
 
-# HISTCONTROL=ignoredups                  # ignoredups causes lines matching the previous history entry to not be saved
-# HISTCONTROL=erasedups                   # erasedups causes lines matching the previous history entry to not be saved
-# HISTCONTROL=ignorespace                 # ignoredups causes to ignore commands starting with whitespace
-# HISTCONTROL=ignoreboth                  # don't put duplicate lines or lines starting with space
-                                          # in the history; 
-HISTCONTROL=ignoreboth:erasedups          # ignoreboth == shorthand for `ignorespace` and `ignoredups`
-                                          # removes all previous lines matching the current line before that line is saved.
+# Enable/install atuin shell plugin
+eval "$(atuin init bash)"
 
-shopt -s histappend                       # append to the history file, don't overwrite it
-shopt -s cmdhist                          # multiline commands are a single command in history
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
-
-# Ref:
-# - HISTFILE vs HISTFILESIZE
-#   - https://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize
-# - HISTCONTROL (everything I wanted)
-#   - https://unix.stackexchange.com/questions/163371/how-long-do-the-contents-of-the-bash-history-file-last
-# - PROMPT_COMMAND (everything I wanted)
-#   - https://unix.stackexchange.com/questions/18212/bash-history-ignoredups-and-erasedups-setting-conflict-with-common-history
-
+## ----------- shell history related
+#COMMONIGNORE="clear:tmux:pwd:du:df"
+#ALIASIGNORE="t:c:tks:ttt"
+#GITIGNORE="gch:master:gpull:gpush"
+#export HISTIGNORE="$COMMONIGNORE:$ALIASIGNORE:$GITIGNORE"
+#
+## TODO: give more try to keep zsh and bash history epoch stamp in sync
+## export HISTTIMEFORMAT=": %s:0;"           # this is just about display, however time is always stored as epoch in the file like:
+#                                            # `# 159454837
+#
+#HISTSIZE=100000                           # limits the number of commands shown by the command history; default:500
+#HISTFILESIZE=100000                       # limits the number of commands which can be saved in $HISTFILE; default:500
+#
+## HISTCONTROL=ignoredups                  # ignoredups causes lines matching the previous history entry to not be saved
+## HISTCONTROL=erasedups                   # erasedups causes lines matching the previous history entry to not be saved
+## HISTCONTROL=ignorespace                 # ignoredups causes to ignore commands starting with whitespace
+## HISTCONTROL=ignoreboth                  # don't put duplicate lines or lines starting with space
+#                                          # in the history; 
+#HISTCONTROL=ignoreboth:erasedups          # ignoreboth == shorthand for `ignorespace` and `ignoredups`
+#                                          # removes all previous lines matching the current line before that line is saved.
+#
+#shopt -s histappend                       # append to the history file, don't overwrite it
+#shopt -s cmdhist                          # multiline commands are a single command in history
+#PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+#
+## Ref:
+## - HISTFILE vs HISTFILESIZE
+##   - https://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize
+## - HISTCONTROL (everything I wanted)
+##   - https://unix.stackexchange.com/questions/163371/how-long-do-the-contents-of-the-bash-history-file-last
+## - PROMPT_COMMAND (everything I wanted)
+##   - https://unix.stackexchange.com/questions/18212/bash-history-ignoredups-and-erasedups-setting-conflict-with-common-history
+#
 # -------------
 
 # check the window size after each command and, if necessary,
@@ -182,3 +197,5 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+. "$HOME/.atuin/bin/env"
