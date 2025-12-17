@@ -141,72 +141,89 @@ bindkey '^e' edit-command-line
 if [ "$TMUX" = "" ]; then tmux; fi
 
 unsetopt beep                                               # stop bell sound on invalid operation
+## -----------shell history related - post migration to atuin
+unset HISTFILE
+unset SAVEHIST
+unset HISTSIZE
 
-# -----------shell history related
+setopt NO_SHARE_HISTORY
+setopt NO_INC_APPEND_HISTORY
+setopt NO_APPEND_HISTORY
+setopt NO_HIST_EXPIRE_DUPS_FIRST
+setopt NO_EXTENDED_HISTORY
 
-# remove duplicates & keep last once in the HISTFILE - NOT working as expected for multiline cmds
-# tac "$HISTFILE" | awk '!x[$0]++' > /tmp/tmpfile  && tac /tmp/tmpfile > "$HISTFILE"
+# Keep history only in memory (short-lived)
+HISTSIZE=10000
 
-# HISTORY FILE
-HISTFILE=~/.bash_history  # keep bash and zsh in sync
-# HISTFILE=~/.zsh_history
-# HISTFILE=~/.all_hists  # backup
-export HISTFILE=$HISTFILE  # to avail as ENV VAR
+# Enable/install atuin shell plugin
+eval "$(atuin init zsh)"
 
-HISTSIZE=100000                                         # default:30
-# HISTFILESIZE=100000                                   # default:not-set
-SAVEHIST=100000                                         # Bash's HISTFILESIZE equivalent
-
-# FIXME - move to ~/.commonrc
-# FIXME - functionality
-COMMONIGNORE="clear:tmux:pwd:du:df"
-ALIASIGNORE="t:c:tks:ttt"
-GITIGNORE="gch:master:gpull:gpush"
-export HISTIGNORE="$COMMONIGNORE:$ALIASIGNORE:$GITIGNORE"
-
-# HISTCONTROL equivalents
-setopt HIST_IGNORE_ALL_DUPS                             # HISTCONTROL=erasedups
-setopt HIST_IGNORE_SPACE                                # HISTCONTROL=ignorespace
-# setopt HIST_IGNORE_DUPS                                 # HISTCONTROL=ignoredups
-setopt HIST_FIND_NO_DUPS                                # when searching for history entries in the line editor, do not display duplicates of a line previously found, even if the duplicates are not contiguous
-setopt HIST_EXPIRE_DUPS_FIRST                           # delete duplicates first when HISTFILE size exceeds HISTSIZE
-
-# History Sharing across multiple sessionshow
-
-# By default the history files are written when the shell closes
-# the following allows the shells to write and read from the history file after each command
-setopt INC_APPEND_HISTORY                               # shopt -s histappend
-
-# 1. cons: does not write to file untill session terminates
-# 2. pros: on current terminal session, hist from other sessions are synced (on enter - new prompt) BUT via hist cache
-# 3. I'll prefer `INC_APPEND_HISTORY` + `exec zsh` than SHARE_HISTORY
-# setopt SHARE_HISTORY                                    # default: ON; PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# setopt EXTENDED_HISTORY                                # default: OFF (but found it ON; see `$ setopt`
-
-# stop prefixing with epoch
-setopt NOSHAREHISTORY                                   # drawback will be no automatic history syncup across multiple session 
-setopt NOEXTENDEDHISTORY                                # extendedhistory feature tells how long a command took in addition to when it ran; default it is off but it doing this to be sure
-
-setopt NO_HIST_BEEP                                     # turn off beep signal when trying scroll up/down beyond history search results
-
-# setopt HIST_REDUCE_BLANKS                               # tidy up the line when it is entered into the history by removing any excess blanks that mean nothing to the shell (including multiline cmd --> single line)
-
-setopt HIST_VERIFY                                      # whenever the user enters a line with history expansion, don’t execute the line directly; instead, perform history expansion and reload the line into the editing buffer. 
-
-
-# PROMPT_COMMAND="history -n; history -w; history -c;"
-# prmptcmd() { eval "$PROMPT_COMMAND" }
-# precmd_functions=(prmptcmd)
-
-# Ref:
-# - Official
-#   - http://zsh.sourceforge.net/Guide/zshguide02.html#l18
-# - All bash equivalents
-#   - https://kevinjalbert.com/more-shell-history/
-# - sharehistory and extendedhistory
-#   - https://unix.stackexchange.com/questions/399527/why-does-zsh-timestamp-history
-
+## -----------shell history related
+#
+## remove duplicates & keep last once in the HISTFILE - NOT working as expected for multiline cmds
+## tac "$HISTFILE" | awk '!x[$0]++' > /tmp/tmpfile  && tac /tmp/tmpfile > "$HISTFILE"
+#
+## HISTORY FILE
+#HISTFILE=~/.bash_history  # keep bash and zsh in sync
+## HISTFILE=~/.zsh_history
+## HISTFILE=~/.all_hists  # backup
+#export HISTFILE=$HISTFILE  # to avail as ENV VAR
+#
+#HISTSIZE=100000                                         # default:30
+## HISTFILESIZE=100000                                   # default:not-set
+#SAVEHIST=100000                                         # Bash's HISTFILESIZE equivalent
+#
+## FIXME - move to ~/.commonrc
+## FIXME - functionality
+#COMMONIGNORE="clear:tmux:pwd:du:df"
+#ALIASIGNORE="t:c:tks:ttt"
+#GITIGNORE="gch:master:gpull:gpush"
+#export HISTIGNORE="$COMMONIGNORE:$ALIASIGNORE:$GITIGNORE"
+#
+## HISTCONTROL equivalents
+#setopt HIST_IGNORE_ALL_DUPS                             # HISTCONTROL=erasedups
+#setopt HIST_IGNORE_SPACE                                # HISTCONTROL=ignorespace
+## setopt HIST_IGNORE_DUPS                                 # HISTCONTROL=ignoredups
+#setopt HIST_FIND_NO_DUPS                                # when searching for history entries in the line editor, do not display duplicates of a line previously found, even if the duplicates are not contiguous
+#setopt HIST_EXPIRE_DUPS_FIRST                           # delete duplicates first when HISTFILE size exceeds HISTSIZE
+#
+## History Sharing across multiple sessionshow
+#
+## By default the history files are written when the shell closes
+## the following allows the shells to write and read from the history file after each command
+#setopt INC_APPEND_HISTORY                               # shopt -s histappend
+#
+## 1. cons: does not write to file untill session terminates
+## 2. pros: on current terminal session, hist from other sessions are synced (on enter - new prompt) BUT via hist cache
+## 3. I'll prefer `INC_APPEND_HISTORY` + `exec zsh` than SHARE_HISTORY
+## setopt SHARE_HISTORY                                    # default: ON; PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#
+## setopt EXTENDED_HISTORY                                # default: OFF (but found it ON; see `$ setopt`
+#
+## stop prefixing with epoch
+## setopt NOSHAREHISTORY                                   # drawback will be no automatic history syncup across multiple session 
+#setopt NOEXTENDEDHISTORY                                # extendedhistory feature tells how long a command took in addition to when it ran; default it is off but it doing this to be sure
+#
+#setopt NO_HIST_BEEP                                     # turn off beep signal when trying scroll up/down beyond history search results
+#
+## setopt HIST_REDUCE_BLANKS                               # tidy up the line when it is entered into the history by removing any excess blanks that mean nothing to the shell (including multiline cmd --> single line)
+#
+#setopt HIST_VERIFY                                      # whenever the user enters a line with history expansion, don’t execute the line directly; instead, perform history expansion and reload the line into the editing buffer. 
+#setopt APPEND_HISTORY                                   # Avoid history rewrite and enforce append
+#
+#
+## PROMPT_COMMAND="history -n; history -w; history -c;"
+## prmptcmd() { eval "$PROMPT_COMMAND" }
+## precmd_functions=(prmptcmd)
+#
+## Ref:
+## - Official
+##   - http://zsh.sourceforge.net/Guide/zshguide02.html#l18
+## - All bash equivalents
+##   - https://kevinjalbert.com/more-shell-history/
+## - sharehistory and extendedhistory
+##   - https://unix.stackexchange.com/questions/399527/why-does-zsh-timestamp-history
+#
 # --------------------------------------------
 
 # Auto-Completion for zsh
@@ -221,3 +238,8 @@ if [ -f $GOPATH/bin/aws-okta ]; then source <(aws-okta completion zsh); fi
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+
+# WarpStream
+export PATH="/Users/toran/.warpstream:$PATH"
+
+. "$HOME/.atuin/bin/env"
