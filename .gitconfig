@@ -31,3 +31,4 @@
 [alias]
     recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
     pulse = "!f() { git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ added += $1; removed += $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", added, removed, added - removed }'; }; f"
+    commits = shortlog -s -n --all
