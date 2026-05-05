@@ -4,14 +4,14 @@
 DIR=$ME/dotfiles
 
 self() {
-    if [ -f $DIR/.self_rc ]; then
-        source $DIR/.self_rc
+    if [ -f $DIR/common/.self_rc ]; then
+        source $DIR/common/.self_rc
     fi
 }
 
 mac() {
-    if [ -f $DIR/.mac_rc ]; then
-        source $DIR/.mac_rc
+    if [ -f $DIR/macos/.mac_rc ]; then
+        source $DIR/macos/.mac_rc
     fi
 }
 

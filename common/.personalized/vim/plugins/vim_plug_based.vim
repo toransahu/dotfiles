@@ -20,6 +20,7 @@ Plug 'Nopik/vim-nerdtree-direnter'            " Fix dir opening in new tab on en
 Plug 'editorconfig/editorconfig-vim'          " Editor properties
 Plug 'tpope/vim-abolish'                      " Easily search for, substitute, and abbreviate multiple variants of a word
 Plug 'justinmk/vim-gtfo'                      " GOTO PWD via file Manager or Terminal;  Usage: got; gof; goT; goF
+Plug 'toransahu/vim-modern-session-manager'
 "Plug 'shime/vim-livedown'                    " markdown live preview in mini server browser
 " Plug 'suan/vim-instant-markdown',             " markdown live preview in mini server browser
             " \ {'for': 'markdown'} 

@@ -1,7 +1,6 @@
 " vim:ft=vim
 
 "===================== General Settings =====================
-" set guifont=JetBrainsMonoNerdFont:h12
 set guifont=hack_nerd_font:h21
 set encoding=utf-8                              " encoding
 set number                                      " set line number

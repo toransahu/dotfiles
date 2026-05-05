@@ -134,13 +134,13 @@ which logcli 2> /dev/null && eval "$(logcli --completion-script-bash)" && eval "
 . ~/.paths.sh
 
 # load public RCs
-if [ -f $ME/dotfiles/.main_rc ]; then
-    . $ME/dotfiles/.main_rc
+if [ -f $ME/dotfiles/common/.main_rc ]; then
+    . $ME/dotfiles/common/.main_rc
 fi
 
 # load private RCs
-if [ -f $ME/dotfiles.pvt/.main_rc ]; then
-    . $ME/dotfiles.pvt/.main_rc
+if [ -f $ME/dotfiles.pvt/common/.main_rc ]; then
+    . $ME/dotfiles.pvt/common/.main_rc
 fi
 
 # aliases

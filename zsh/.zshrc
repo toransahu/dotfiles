@@ -158,6 +158,9 @@ HISTSIZE=10000
 # Enable/install atuin shell plugin
 eval "$(atuin init zsh --disable-up-arrow)"
 
+# Hook direnv for local .envrc loading
+eval "$(direnv hook zsh)"
+
 ## -----------shell history related
 #
 ## remove duplicates & keep last once in the HISTFILE - NOT working as expected for multiline cmds
