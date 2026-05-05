@@ -1,11 +1,10 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- load the plugin before saving
     opts = require "configs.conform",
   },
-
-  -- These are some examples, uncomment them if you want to see them work!
+  -- For Nvim's Naive LSP's Configuration
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -13,18 +12,30 @@ return {
     end,
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
-
   {
-      "nvim-treesitter/nvim-treesitter",
-      opts = {
-          ensure_installed = {
-              "vim", "lua", "vimdoc", "html", "css", "go", "python"
-          },
-          highlight = {
-              enable = true, -- false will disable the whole extension
-          },
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "go",
+        "python",
       },
+      highlight = {
+        enable = true, -- false will disable the whole extension
+      },
+    },
+  },
+  -- Markdown Preview on Browser
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 }
