@@ -246,3 +246,6 @@ fpath+=~/.zfunc
 export PATH="/Users/toran/.warpstream:$PATH"
 
 . "$HOME/.atuin/bin/env"
+
+# add Pulumi to the PATH
+export PATH=$PATH:/Users/toran/.pulumi/bin
