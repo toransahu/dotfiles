@@ -32,3 +32,5 @@
     recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
     pulse = "!f() { git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ added += $1; removed += $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", added, removed, added - removed }'; }; f"
     commits = shortlog -s -n --all
+	wt-open = "!f() { BRANCH=\"$1\"; REPO=$(basename -s .git \"$(git config --get remote.origin.url 2>/dev/null || pwd)\"); git worktree add \"../${REPO}.wt.${BRANCH}\" \"$BRANCH\"; }; f"
+	wt-new = "!f() { NEW_BRANCH=\"$1\"; BASE_BRANCH=\"$2\"; REPO=$(basename -s .git \"$(git config --get remote.origin.url 2>/dev/null || pwd)\"); git worktree add -b \"$NEW_BRANCH\" \"../${REPO}.wt.${NEW_BRANCH}\" \"$BASE_BRANCH\"; }; f"
