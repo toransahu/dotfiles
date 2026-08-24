@@ -406,3 +406,4 @@ alias benq1='displayplacer "id:8A009B01-EA2C-411B-92C0-A25198908D32 res:1920x108
 alias dell1='displayplacer "id:F56AF1A3-39CB-4F62-8DA7-EBA37239D374 res:1920x1080 hz:60 color_depth:8 enabled:true scaling:off origin:(0,0) degree:0" "id:37D8832A-2D66-02CA-B9F7-8F30A301B230 res:1512x982 hz:120 color_depth:8 enabled:true scaling:on origin:(-1512,624) degree:0" "id:8A009B01-EA2C-411B-92C0-A25198908D32 res:1920x1080 hz:60 color_depth:8 enabled:true scaling:off origin:(-3432,624) degree:0"'
 alias codex='lcodex'
 alias cursor='agent'
+alias gemini='lgemini'
