@@ -249,3 +249,9 @@ export PATH="/Users/toran/.warpstream:$PATH"
 
 # add Pulumi to the PATH
 export PATH=$PATH:/Users/toran/.pulumi/bin
+
+# Added by CAPA installer
+export PATH="/Users/toran/.local/bin:$PATH"
+
+# Add mise to the path
+eval "$(mise activate zsh)"
